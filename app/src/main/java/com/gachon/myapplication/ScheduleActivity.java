@@ -2,32 +2,40 @@ package com.gachon.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class ScheduleActivity extends AppCompatActivity {
 
     // Changes
     private long baseTime,pauseTime;
+    public static final int INIT=0;
+    public static final int RUN=1;
+    public static final int PAUSE=2;
+    public static int status=INIT;
+    private TextView clock;
+    private Button startBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acticity_schdule);
-        TextView clock = findViewById(R.id.Clock);
-        Button startBtn = findViewById(R.id.start_btn);
-        Button stopBtn=findViewById(R.id.stop_btn);
+        clock = findViewById(R.id.Clock);
+        startBtn = findViewById(R.id.start_btn);
         baseTime= SystemClock.elapsedRealtime();//time check
-        clock.setText(getTime());
         startBtn.setOnClickListener(onClickListener);
-        stopBtn.setOnClickListener(onClickListener);
         //image button
         ImageButton Block = findViewById(R.id.Block);
         Block.setOnClickListener(new View.OnClickListener() {
@@ -88,30 +96,41 @@ public class ScheduleActivity extends AppCompatActivity {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.start_btn:
-                    staButton();
-                    break;
-                case R.id.stop_btn:
-                    stopButton();
-                    break;
-            }
+            staButton();
         }
     };
     public void staButton(){
+        switch (status){
+            case INIT:
+                baseTime =SystemClock.elapsedRealtime();
+                handler.sendEmptyMessage(0);
+                pauseTime=SystemClock.elapsedRealtime();
+                startBtn.setText("멈춤2");
+                status=RUN;
+                break;
+            case RUN:
+                handler.removeMessages(0);
+                startBtn.setText("시작");
+                pauseTime = SystemClock.elapsedRealtime();
+                clock.setText("00:00:00");
+                status=INIT;
+                break;
 
-    }
-    public void stopButton(){
-
+        }
     }
     public String getTime(){
         //time check
         long nowtime=SystemClock.elapsedRealtime();
         long overtime= nowtime-baseTime;
-        long m =overtime/1000/60;
-        long s= (overtime/1000)%60;
-        long h=overtime/60;
-        String recTime =String.format("%02d:%02:%02d",h,m,s);
+        SimpleDateFormat format= new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        String recTime =format.format(overtime);
         return recTime;
     }
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
+            clock.setText(getTime());
+            handler.sendEmptyMessage(0);
+        }
+    };
 }
