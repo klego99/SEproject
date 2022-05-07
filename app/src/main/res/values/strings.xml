@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="plan">일정</string>
+    <string name="block">집중</string>
+    <string name="graph">통계</string>
+    <string name="friends">친구</string>
+</resources>
