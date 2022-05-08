@@ -14,141 +14,26 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/timerTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:visibility="gone"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/start_btn"
-            app:layout_constraintVertical_bias="0.095">
-
-            <TextView
-                android:id="@+id/hour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="00"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text=":"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <TextView
-                android:id="@+id/minute"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="00"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text=":"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <TextView
-                android:id="@+id/second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="00"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/timerET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/start_btn"
-            app:layout_constraintVertical_bias="0.095">
-
-            <EditText
-                android:id="@+id/hourE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="00"
-                android:hint="00"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text=":"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <EditText
-                android:id="@+id/minuteE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="00"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text=":"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-
-            <EditText
-                android:id="@+id/secondE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="00"
-                android:textColor="@color/white"
-                android:textSize="70dp" />
-        </LinearLayout>
-
         <TextView
-            android:id="@+id/finish"
+            android:background="@android:color/transparent"
+            android:id="@+id/Clock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:text="00:00:00"
+            android:textSize="70dp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timerTV"
-            app:layout_constraintVertical_bias="0.48"
-            tools:layout_editor_absoluteX="193dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.498" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pm"
-            android:shadowColor="#000000"
-            android:shadowDx="7.0"
-            android:shadowDy="7.0"
-            android:shadowRadius="15.0"
             android:text="집중을 원하시면 시작해주세요"
             android:textColor="@color/nonClickButton"
             android:textSize="25dp"
@@ -157,28 +42,20 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.273" />
+            app:layout_constraintVertical_bias="0.273"
+            android:shadowRadius="15.0"
+            android:shadowDx="7.0"
+            android:shadowDy="7.0"
+            android:shadowColor="#000000" />
 
         <Button
             android:id="@+id/start_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="200dp"
+            android:layout_marginEnd="160dp"
             android:text="시작"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/reset_btn"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
-
-        <Button
-            android:id="@+id/reset_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="112dp"
-            android:text="리셋"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/start_btn"
             app:layout_constraintTop_toBottomOf="@id/textView" />
 
 

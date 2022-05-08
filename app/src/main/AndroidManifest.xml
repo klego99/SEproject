@@ -10,14 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Schedule2Activity"
+            android:exported="false" />
+        <activity
             android:name=".GraphActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".FriendActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ScheduleActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
