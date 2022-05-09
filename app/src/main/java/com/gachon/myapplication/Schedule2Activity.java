@@ -126,11 +126,11 @@ public class Schedule2Activity extends AppCompatActivity {
         String recTime =format.format(overtime);
         return recTime;
     }
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(@NonNull Message msg){
-            clock.setText(getTime());
-            handler.sendEmptyMessage(0);
-        }
-    };
+        Handler handler = new Handler(){
+            @Override
+            public void handleMessage(@NonNull Message msg){
+                clock.setText(getTime());
+                handler.sendEmptyMessage(0);
+            }
+        };
 }

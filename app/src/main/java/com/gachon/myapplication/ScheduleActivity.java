@@ -144,6 +144,7 @@ public class ScheduleActivity extends AppCompatActivity {
         });
     }
     public void timerSetting(Timer timer){
+
         if(second!=0){
             second--;
         }
@@ -160,33 +161,71 @@ public class ScheduleActivity extends AppCompatActivity {
         }
 
         if(second<=9){
-            secondT.setText("0"+second);
+            handler.sendEmptyMessage(0);
         }else{
-            secondT.setText(Integer.toString(second));
+            handler2.sendEmptyMessage(0);
         }
 
         if(minute<=9){
-            minuteT.setText("0"+minute);
+            mhandler.sendEmptyMessage(0);
         }else{
-            minuteT.setText(Integer.toString(minute));
+            mhandler2.sendEmptyMessage(0);
         }
 
         if(hour<=9){
-            hourT.setText("0"+hour);
+            hhandler.sendEmptyMessage(0);
         }else{
-            hourT.setText(Integer.toString(hour));
+            hhandler2.sendEmptyMessage(0);
         }
 
         if(hour==0&&minute==0&&second==0){
             timer.cancel();
+            Log.i("timer","finish");
             finishment.setText("종료되었습니다.");
         }
     }
     Handler handler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg){
+            secondT.setText("0"+second);
+            handler.sendEmptyMessage(0);
+        }
+    };
+    Handler handler2 = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
+            secondT.setText(Integer.toString(second));
+            handler.sendEmptyMessage(0);
+        }
+    };
+    Handler mhandler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
+            minuteT.setText("0"+minute);
+            handler.sendEmptyMessage(0);
+        }
+    };
+    Handler mhandler2 = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
+            minuteT.setText(Integer.toString(minute));
+            handler.sendEmptyMessage(0);
+        }
+    };
+    Handler hhandler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
             hourT.setText("0"+hour);
             handler.sendEmptyMessage(0);
         }
     };
+    Handler hhandler2 = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
+            hourT.setText(Integer.toString(hour));
+            handler.sendEmptyMessage(0);
+        }
+    };
+
 }
+
