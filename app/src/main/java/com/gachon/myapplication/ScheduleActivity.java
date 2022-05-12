@@ -56,6 +56,7 @@ public class ScheduleActivity extends AppCompatActivity {
         linearLayoutTV=findViewById(R.id.timerTV);
         linearLayoutET=findViewById(R.id.timerET);
         finishment=findViewById(R.id.finish);
+        Timer timer= new Timer();
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +70,7 @@ public class ScheduleActivity extends AppCompatActivity {
                hour=Integer.parseInt(hourE.getText().toString());
                minute=Integer.parseInt(minuteE.getText().toString());
                second=Integer.parseInt(secondE.getText().toString());
-               Log.i("time",hour+"/"+minute+"/"+second);
-                Timer timer= new Timer();
+
                 TimerTask timerTask= new TimerTask() {
                     @Override
                     public void run() {
@@ -84,6 +84,7 @@ public class ScheduleActivity extends AppCompatActivity {
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timer.cancel();
             }
         });
         //image button
